@@ -10,8 +10,8 @@ class CreateOrders < ActiveRecord::Migration[6.1]
       t.integer  :total_payment, null:false
       t.integer  :payment_method, null:false, default: 0
       t.integer  :order_status, null:false, default: 0
-      t.datetime :create_at, null: false,default: -> { 'NOW()' }
-      t.datetime :update_at, null: false,default: -> { 'NOW()' }
+      t.datetime :create_at, null: false
+      t.datetime :update_at, null: false
 
 
       t.timestamps

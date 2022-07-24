@@ -5,8 +5,8 @@ class CreateCartItems < ActiveRecord::Migration[6.1]
       t.integer  :item_id, null: false
       t.integer  :customer_id, null: false
       t.integer  :amount, null: false
-      t.datetime :create_at, null: false,default: -> { 'NOW()' }
-      t.datetime :update_at, null: false,default: -> { 'NOW()' }
+      t.datetime :create_at, null: false
+      t.datetime :update_at, null: false
 
       t.timestamps
     end
