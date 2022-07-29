@@ -1,0 +1,35 @@
+<tbody>
+
+  <% @items.each do |item| %>
+
+    <tr>
+
+      <td>
+
+        <%= image_tag item.get_profile_image(100,100) %>
+
+      </td>
+
+      <td>
+
+        <%= item.name %>
+
+      </td>
+
+      <td>
+
+        <%= item.introduction %>
+
+      </td>
+
+      <td>
+
+        <%= item.price %>
+
+      </td>
+
+    </tr>
+
+  <% end %>
+
+</tbody>

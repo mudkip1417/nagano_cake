@@ -1,6 +1,15 @@
 Rails.application.routes.draw do
+
   root to: 'homes#top'
   devise_for :admin
   devise_for :customers
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
+  namespace :admin do
+    resources :genres, only: [:index,:create,:edit,:update]
+  end
+
+  namespace :admin do
+    resources :items, only: [:index,:create,:edit,:update,:new,:show]
+  end
+
 end

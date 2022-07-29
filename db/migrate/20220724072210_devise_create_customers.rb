@@ -29,9 +29,6 @@ class DeviseCreateCustomers < ActiveRecord::Migration[6.1]
       # 退会ステータス
       t.boolean :is_active, null: false, default: true
 
-      # 作成、更新時間
-      t.datetime :create_at, null: false
-      t.datetime :update_at, null: false
 
       ## Trackable
       # t.integer  :sign_in_count, default: 0, null: false
