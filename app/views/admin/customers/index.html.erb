@@ -1,0 +1,29 @@
+<tbody>
+
+  <% @customer.each do |item| %>
+
+    <tr>
+
+      <td>
+
+        <%= customer.last_name %>
+
+      </td>
+
+      <td>
+
+        <%= customer.first_name %>
+
+      </td>
+
+      <td>
+
+        <%= customer.is_active %>
+
+      </td>
+
+    </tr>
+
+  <% end %>
+
+</tbody>
