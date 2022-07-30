@@ -5,23 +5,23 @@ Rails.application.routes.draw do
   devise_for :customers
 
   namespace :admin do
-    resources :genres, only: [:index,:create,:edit,:update]
+    resources :genres
   end
 
   namespace :admin do
-    resources :items, only: [:index,:create,:edit,:update,:new,:show]
+    resources :items
   end
 
   namespace :admin do
-    resources :customers, only: [:index,:show,:edit,:update,:create]
+    resources :customers
   end
-  
+
   namespace :admin do
-   resources :orders, only[:show,:update]
+   resources :orders
   end
-  
+
   namespace :admin do
-    resources :homes, only[:index]
+    resources :homes, only: [:index]
   end
 
 end
