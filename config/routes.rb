@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   registrations: "public/registrations",
   sessions: 'public/sessions'
   }
-  
+
   # 管理者用
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   sessions: "admin/sessions"
@@ -30,7 +30,7 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
-    resources :homes, only: [:index]
+    get "homes/top"
   end
 
 end
