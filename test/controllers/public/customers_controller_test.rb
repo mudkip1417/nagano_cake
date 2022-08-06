@@ -1,18 +1,18 @@
 require "test_helper"
 
-class Public::CostomersControllerTest < ActionDispatch::IntegrationTest
+class Public::CustomersControllerTest < ActionDispatch::IntegrationTest
   test "should get show" do
-    get public_costomers_show_url
+    get public_customers_show_url
     assert_response :success
   end
 
   test "should get edit" do
-    get public_costomers_edit_url
+    get public_customers_edit_url
     assert_response :success
   end
 
   test "should get unsubscribe" do
-    get public_costomers_unsubscribe_url
+    get public_customers_unsubscribe_url
     assert_response :success
   end
 end
