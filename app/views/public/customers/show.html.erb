@@ -18,7 +18,7 @@
 
         	  <th>name</th>
 
-        	  <th><%= customer.last_name %></th>
+        	  <th><%= customer.last_name %> <%= customer.first_name %></th>
 
           </tr>
 
@@ -96,12 +96,12 @@
 
               <td>
 
-                <%= link_to user_path(@book.user.id) do %>
+                <%= link_to customer_path(@order.user.id) do %>
 
-                  <%= image_tag @book.user.get_profile_image(100,100) %>
+                  <%= image_tag @order.customer.get_profile_image(100,100) %>
 
                   <br>
-                  <%= @book.user.name %>
+                  <%= @order.customer.name %>
 
                 <% end %>
 
@@ -109,9 +109,9 @@
 
               <td>
 
-                <%= link_to book_path(@book.id) do %>
+                <%= link_to order_path(@order.id) do %>
 
-                  <%= @book.title %>
+                  <%= @order.title %>
 
                 <% end %>
 
@@ -119,22 +119,22 @@
 
               <td>
 
-                <%= @book.body %>
+                <%= @order.body %>
 
               </td>
 
               <td>
 
-                <% if @book.user == current_user %>
-                  <%= link_to "Edit", edit_book_path(@book.id), class:'btn btn-sm btn-success' %>
+                <% if @order.customer == current_customer %>
+                  <%= link_to "Edit", public_edit_order_path(@order.id), class:'btn btn-sm btn-success' %>
                 <% end %>
 
               </td>
 
               <td>
 
-                <% if @book.user == current_user %>
-                  <%= link_to "Destroy", book_path(@book.id), class:'btn btn-sm btn-danger', method: :delete %>
+                <% if @order.customer == current_costomer %>
+                  <%= link_to "Destroy", order_path(@order.id), class:'btn btn-sm btn-danger', method: :delete %>
                 <% end %>
 
               </td>
