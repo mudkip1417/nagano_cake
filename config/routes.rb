@@ -17,7 +17,9 @@ Rails.application.routes.draw do
   end
 
   namespace :public do
-    resources :customers, only: [:show,:edit,:update,:unsubscribe,:withdraw]
+    resources :customers, only: [:update,:unsubscribe,:withdraw]
+    get 'customers/my_page' => 'customers#show', as: 'customers'
+    get 'customers/info/edit' => 'customers#edit', as: 'edit_customers'
   end
 
   namespace :public do
