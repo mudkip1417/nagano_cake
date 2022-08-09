@@ -1,7 +1,7 @@
 
 Admin.create!(
-   email: 'ngano@cake',
-   password: 'ffffff'
+   email: 'nagano@cake',
+   password: 'naganocake'
 )
 
 
