@@ -2,6 +2,8 @@
 
 class Public::SessionsController < Devise::SessionsController
 
+  before_action :customer_state, only: [:create]
+
   protected
   # 退会しているかを判断するメソッド
   def customer_state
@@ -12,7 +14,6 @@ class Public::SessionsController < Devise::SessionsController
   ## 【処理内容2】 取得したアカウントのパスワードと入力されたパスワードが一致してるかを判別
     if @customer.valid_password?(params[:customer][:password])
   ## 【処理内容3】論理積
-      true && !true
     end
   end
   # before_action :configure_sign_in_params, only: [:create]
