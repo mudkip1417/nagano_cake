@@ -1,12 +1,10 @@
-<h1>my page</h1>
+<section class="py-5 text-center container">
 
-  <div class="container px-5 px-sm-0">
+  <div class="row py-lg-5">
 
-    <div class="row">
+    <div class="col-lg-6 col-md-8 mx-auto">
 
-      <div class="col-md-3">
-
-        <h2>Customer info</h2>
+      <h1 class="fw-light">My Page</h1>
 
       <table class="table">
 
@@ -16,25 +14,41 @@
 
           <tr>
 
-        	  <th>name</th>
+        	  <th>Name</th>
 
-        	  <th><%= customer.last_name %> <%= customer.first_name %></th>
-
-          </tr>
-
-          <tr>
-
-        	  <th>email</th>
-
-        	  <th><%= customer.email %></th>
+        	  <th><%= @customer.last_name %> <%= @customer.first_name %></th>
 
           </tr>
 
           <tr>
 
-        	  <th>address</th>
+        	  <th>Email</th>
 
-        	  <th><%= customer.address %></th>
+        	  <th><%= @customer.email %></th>
+
+          </tr>
+
+          <tr>
+
+        	  <th>Postal Code</th>
+
+        	  <th><%= @customer.postal_code %></th>
+
+          </tr>
+
+          <tr>
+
+        	  <th>Address</th>
+
+        	  <th><%= @customer.address %></th>
+
+          </tr>
+
+          <tr>
+
+        	  <th>Telephone Number</th>
+
+        	  <th><%= @customer.telephone_number %></th>
 
           </tr>
 
@@ -42,88 +56,27 @@
 
       </table>
 
-      <div class="row">
+      <p>
 
-        <%= link_to public_edit_customers_path(@customer.id), class:'btn btn-outline-secondary btn-block' do %>
-          <i class="fas fa-user-cog"></i>
-        <% end %>
+        <%= link_to "登録情報編集", public_edit_customers_path, class:'btn btn-success my2' %>
 
-      </div>
+        <%= link_to "注文履歴一覧", public_orders_path, class:'btn btn-primary my-2' %>
 
-<div class="container px-5 px-sm-0">
+        <a href="#" class="btn btn-secondary my-2">Secondary action</a>
 
-<div class="row">
+      </p>
 
-
-<%= render 'user_info', book:@book,user:current_user %>
-
-
-      <div class="col-md-8 offset-md-1">
-
-        <h2>Orders</h2>
-
-        <table class="table table-hover table-inverse">
-
-          <thead>
-
-            <tr>
-
-              <th></th>
-
-              <th>Title</th>
-
-              <th>Opinion</th>
-
-              <th colspan="3"></th>
-
-            </tr>
-
-          </thead>
-
-          <tbody>
-
-            <% @orders.each do | %>
-
-              <tr>
-
-                <td>
-
-                  <%= link_to user_path(book.user.id) do %>
-
-                    <%= image_tag @orders.customer.get_profile_image(100,100) %>
-
-                  <% end %>
-
-                </td>
-
-                <td>
-
-                  <%= link_to _path(.id) do %>
-
-                    <%= @item.name %>
-
-                  <% end %>
-
-                </td>
-
-                <td>
-
-                  <%= @item.price %>
-
-                </td>
-
-              </tr>
-
-            <% end %>
-
-          </tbody>
-
-        </table>
-
-      </div>
+    </div>
 
   </div>
 
-</div>
+</section>
+
+
+
+
+
+
+
 
 

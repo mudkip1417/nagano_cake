@@ -1,2 +1,87 @@
-<h1>Public::Customers#edit</h1>
-<p>Find me in app/views/public/customers/edit.html.erb</p>
+<div class="container">
+
+  <div class="row">
+
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+
+      <h1>会員情報編集</h1>
+
+      <%= form_with model: @customer, url: public_customer_path(current_customer.id), method: :patch do |f| %>
+
+          <div class="form-group">
+
+          <label for="customer_last_name">Last name</label>
+
+            <%= f.text_field :last_name, class:'form-control item_name'  %>
+
+          </div>
+
+          <div class="form-group">
+
+            <label for="customer_first_name">First name</label>
+
+             <%= f.text_field :first_name, class:'form-control item_introduction' %>
+
+          </div>
+
+          <div class="form-group">
+
+            <label for="customer_last_name_kana">Last name kana</label>
+
+            <%= f.text_field :last_name_kana, class:'form-control item_price' %>
+
+          </div>
+
+          <div class="form-group">
+
+            <label for="customer_first_name_kana">First_name_kana</label>
+
+            <%= f.text_field :first_name_kana, class:'form-control item_price' %>
+
+          </div>
+
+          <div class="form-group">
+
+            <label for="customer_email">Email</label>
+
+            <%= f.text_field :email, class:'form-control item_price' %>
+
+          </div>
+
+          <div class="form-group">
+
+            <label for="customer_postal_code">Postal code</label>
+
+            <%= f.text_field :postal_code, class:'form-control item_price' %>
+
+          </div>
+
+          <div class="form-group">
+
+            <label for="customer_address">Address</label>
+
+            <%= f.text_field :address, class:'form-control item_price' %>
+
+          </div>
+
+          <div class="form-group">
+
+            <label for="customer_telephone_number">Telephone number</label>
+
+            <%= f.text_field :telephone_number, class:'form-control item_price' %>
+
+          </div>
+
+          <div class="form-group">
+
+            <%= f.submit '会員情報変更', class:'btn btn-success' %>
+
+          </div>
+
+      <% end %>
+
+    </div>
+
+  </div>
+
+</div>
