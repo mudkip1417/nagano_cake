@@ -15,10 +15,15 @@ class Public::CustomersController < ApplicationController
   end
 
   def unsubscribe
-
+    @customer = Customer.find_by(email: params[:email])
   end
 
-
+  def withdraw
+    @customer = Customer.find_by(email: params[:email])
+    @customer.update(is_valid: false)
+    reset_session
+    redirect_to root_path
+  end
 
   private
 
@@ -27,3 +32,5 @@ class Public::CustomersController < ApplicationController
   end
 
 end
+
+
