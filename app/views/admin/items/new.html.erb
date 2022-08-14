@@ -1,46 +1,53 @@
 
+<div class="container">
+
+  <div class="m-2 text-center">
+
+    <h1 class="h3 mb-2 font-weight-normal">商品登録</h1>
+
+     <%= form_with model: @item, url: '/admin/items', method: :post do |f| %>
+
+        <div class="form-group">
+
+          <label for="item_name">Name</label>
+
+          <%= f.text_field :name, class:'form-control item_name' %>
+
+        </div>
+
+        <div class="form-group">
+
+          <label for="item_name">Image</label>
+
+          <%= f.file_field :image, accept: "image/*",  class:'form-control image' %>
+
+        </div>
+
+        <div class="form-group">
+
+          <label for="item_introduction">Introduction</label>
+
+          <%= f.text_area :introduction, class:'form-control item_intorduction' %>
+
+        </div>
 
 
-   <%= form_with model: @item do |f| %>
+        <div class="form-group">
 
-      <div class="form-group">
+          <label for="item_price">Price</label>
 
-        <label for="item_name">Name</label>
+          <%= f.text_field :price, class:'form-control item_price' %>
 
-        <%= f.text_field :name, class:'form-control item_name' %>
+        </div>
 
-      </div>
+        <div class="form-group">
 
-      <div class="form-group">
+          <%= f.submit '商品登録', class:'btn btn-success' %>
 
-        <label for="item_name">Image</label>
+        </div>
 
-        <%= f.text_field :image_id, accept: "image/*",  class:'form-control image_id' %>
+      <% end %>
 
-      </div>
+  </div>
 
-      <div class="form-group">
-
-        <label for="item_introduction">Introduction</label>
-
-        <%= f.text_area :introduction, class:'form-control item_intorduction' %>
-
-      </div>
-
-
-      <div class="form-group">
-
-        <label for="item_price">Price</label>
-
-        <%= f.text_area :price, class:'form-control item_price' %>
-
-      </div>
-
-      <div class="form-group">
-
-        <%= f.submit 'Create Book', class:'btn btn-success' %>
-
-      </div>
-
-    <% end %>
-
+</div>

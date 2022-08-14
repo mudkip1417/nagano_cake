@@ -10,9 +10,9 @@
 
   <div>
 
-    <%= link_to '退会しない', _path() %>
+    <%= link_to '退会しない', public_customers_path(@customer) %>
 
-    <%= link_to "退会する", withdraw_user_path(@user), method: :patch %>
+    <%= link_to "退会する", public_withdraw_path(@customer), method: :patch %>
 
   </div>
 
