@@ -1,35 +1,47 @@
-<tbody>
+<div class="album py-5 bg-light">
 
-  <% @items.each do |item| %>
+  <div class="container">
 
-    <tr>
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
 
-      <td>
 
-        <%= image_tag item.get_profile_image(100,100) %>
 
-      </td>
+      <div class="col">
 
-      <td>
+        <div class="card shadow-sm">
 
-        <%= item.name %>
+          <%= image_tag @items.get_image, size: "250x225", class:'bd-placeholder-img card-img-top' %>
 
-      </td>
+          <div class="card-body">
 
-      <td>
+            <p class="card-title"><%= @items.name %></p>
 
-        <%= item.introduction %>
+            <p class="card-text"><%= @items.price %></p>
 
-      </td>
+            <div class="d-flex justify-content-between align-items-center">
 
-      <td>
+              <div class="btn-group">
 
-        <%= item.price %>
+                <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
 
-      </td>
+                <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
 
-    </tr>
+              </div>
 
-  <% end %>
+              <small class="text-muted"><%= @items.price %>円</small>
 
-</tbody>
+            </div>
+
+          </div>
+
+        </div>
+
+
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

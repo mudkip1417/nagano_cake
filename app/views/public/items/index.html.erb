@@ -1,2 +1,47 @@
-<h1>Public::Items#index</h1>
-<p>Find me in app/views/public/items/index.html.erb</p>
+<div class="album py-5 bg-light">
+
+  <div class="container">
+
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+
+
+
+      <div class="col">
+
+        <div class="card shadow-sm">
+
+          <%= image_tag @items.image, size: "250x225", class:'bd-placeholder-img card-img-top' %>
+
+          <div class="card-body">
+
+            <p class="card-title"><%= @items.name %></p>
+
+            <p class="card-text"><%= @items.price %></p>
+
+            <div class="d-flex justify-content-between align-items-center">
+
+              <div class="btn-group">
+
+                <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+
+                <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+
+              </div>
+
+              <small class="text-muted"><%= @items.price %>円</small>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
