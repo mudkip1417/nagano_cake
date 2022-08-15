@@ -104,7 +104,6 @@ ActiveRecord::Schema.define(version: 2022_08_11_011751) do
     t.boolean "is_active", default: true, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "image_id"
   end
 
   create_table "order_details", force: :cascade do |t|

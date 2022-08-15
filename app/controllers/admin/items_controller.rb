@@ -9,7 +9,9 @@ class Admin::ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
+    @item.genre_id = 3
     @item.save
+    # binding.pry
     redirect_to admin_items_path
   end
 
