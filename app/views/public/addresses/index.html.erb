@@ -1,2 +1,110 @@
-<h1>Public::Addresses#index</h1>
-<p>Find me in app/views/public/addresses/index.html.erb</p>
+
+<br>
+<h1 class="mx-auto col-5 text-center">配送先情報</h1>
+<br>
+
+<div class="border col-10 mx-auto">
+
+  <br>
+  <h2>住所登録</h2>
+  <br>
+
+  <%= form_with model: @address, url: public_addresses_path, method: :post do |f| %>
+
+    <div class="row">
+
+      <div class="col-md">
+
+        <div class="form-group">
+
+          <label for="address_name">宛名</label>
+
+            <%= f.text_field :name, class:'form-control address_name' %>
+
+          </div>
+
+          <div class="form-group">
+
+            <label for="address_postal_code">郵便番号</label>
+
+            <%= f.text_field :postal_code, class:'form-control address_postal_code' %>
+
+          </div>
+
+          <div class="form-group">
+
+            <label for="address">住所</label>
+
+            <%= f.text_field :address, class:'form-control address' %>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="row mx-auto text-center">
+
+        <div class="col-5 mx-auto">
+
+          <%= f.submit '新規登録', class:'btn btn-outline-primary btn-block' %>
+
+        </div>
+
+      </div>
+
+    <% end %>
+
+        <div class="col-1">
+        </div>
+        <br>
+        <br>
+        <hr>
+        <br>
+        <h2>人事データ一覧</h2>
+        <div class="row">
+            <div class="col-md">
+
+                <table class="table">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">No</th>
+                            <th scope="col">氏名</th>
+                            <th scope="col">部署</th>
+                            <th scope="col">住所</th>
+                            <th scope="col">電話番号</th>
+                            <th scope="col">補足</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>侍1</td>
+                            <td>システム開発部</td>
+                            <td>神奈川県〇〇市〇〇区〇〇町X-X-X</td>
+                            <td>ZZZ-ZZZZ-ZZZZ</td>
+                            <td>2013年新卒入社</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">2</th>
+                            <td>侍2</td>
+                            <td>システム開発部</td>
+                            <td>神奈川県〇〇市〇〇区〇〇町X-X-X</td>
+                            <td>ZZZ-ZZZZ-ZZZZ</td>
+                            <td>2010年新卒入社</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">3</th>
+                            <td>侍3</td>
+                            <td>システム開発部</td>
+                            <td>神奈川県〇〇市〇〇区〇〇町X-X-X</td>
+                            <td>ZZZ-ZZZZ-ZZZZ</td>
+                            <td>1990年新卒入社</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <br>
+    </div>
+
