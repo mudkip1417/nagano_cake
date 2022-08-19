@@ -1,2 +1,59 @@
-<h1>Public::Addresses#edit</h1>
-<p>Find me in app/views/public/addresses/edit.html.erb</p>
+<br>
+<h1 class="mx-auto col-5 text-center">配送先情報</h1>
+<br>
+
+<div class="border col-10 mx-auto">
+
+  <br>
+  <h2>住所登録</h2>
+  <br>
+
+  <%= form_with model: @address, url: public_address_path(@address.id), method: :patch do |f| %>
+
+    <div class="row">
+
+      <div class="col-md">
+
+        <div class="form-group">
+
+          <label for="address_name">宛名</label>
+
+            <%= f.text_field :name, class:'form-control address_name' %>
+
+        </div>
+
+        <div class="form-group">
+
+          <label for="address_postal_code">郵便番号</label>
+
+          <%= f.text_field :postal_code, class:'form-control address_postal_code' %>
+
+        </div>
+
+        <div class="form-group">
+
+          <label for="address">住所</label>
+
+          <%= f.text_field :address, class:'form-control address' %>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="row mx-auto text-center">
+
+      <div class="col-5 mx-auto">
+
+        <%= f.submit '新規登録', class:'btn btn-outline-primary btn-block' %>
+
+      </div>
+
+    </div>
+
+  <% end %>
+
+  <%= link_to "一覧画面へ", public_addresses_path(current_customer.id) %>
+
+</div>

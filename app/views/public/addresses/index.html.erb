@@ -80,6 +80,8 @@
 
             <th scope="col">住所</th>
 
+            <th scope="col"> </th>
+
           </tr>
 
         </thead>
@@ -95,6 +97,16 @@
               <td><%= address.postal_code %></td>
 
               <td><%= address.address %></td>
+
+              <td class="text-right">
+                <% if address.customer == current_customer %>
+                  <%= link_to "編集", edit_public_address_path(address.id), class:'btn btn-sm btn-success' %>
+                <% end %>
+
+                <% if address.customer == current_customer %>
+                  <%= link_to "削除", public_address_path(address.id), class:'btn btn-sm btn-danger', method: :delete %>
+                <% end %>
+              </td>
 
             </tr>
 
