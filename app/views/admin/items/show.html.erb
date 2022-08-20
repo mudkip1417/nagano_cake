@@ -1,25 +1,33 @@
-<tbody>
+<br>
+<br>
+<div class="container">
 
-  <tr>
+  <div class="col">
 
-    <td>
+    <div class="card shadow-sm">
 
-      <%= item.name %>
+      <%= link_to public_item_path(@item.id) do %>
 
-    </td>
+        <%= image_tag @item.image, size: "250x225", class:'bd-placeholder-img card-img-top' %>
 
-    <td>
+      <% end %>
 
-      <%= item.introduction %>
+      <div class="card-body">
 
-    </td>
+        <p class="card-title">商品名:<%= @item.name %></p>
 
-    <td>
+        <p class="card-title">紹介:<br><%= @item.introduction %></p>
 
-      <%= item.price %>
+        <div class="d-flex justify-content-between align-items-center">
 
-    </td>
+          <small class="text-muted">価格:<%= @item.price %>円</small>
 
-  </tr>
+        </div>
 
-</tbody>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

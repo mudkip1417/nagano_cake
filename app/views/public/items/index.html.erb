@@ -4,31 +4,27 @@
 
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
 
-    <%= @items.each do |item| %>
+      <% @items.each do |item| %>
 
-      <div class="col">
+        <div class="col">
 
-        <div class="card shadow-sm">
+          <div class="card shadow-sm">
 
-          <%= image_tag item.image, size: "250x225", class:'bd-placeholder-img card-img-top' %>
+            <%= link_to public_item_path(item.id) do %>
 
-          <div class="card-body">
+              <%= image_tag item.image, size: "250x225", class:'bd-placeholder-img card-img-top' %>
 
-            <p class="card-title"><%= item.name %></p>
+            <% end %>
 
-            <p class="card-text"><%= item.introduction %></p>
+            <div class="card-body">
 
-            <div class="d-flex justify-content-between align-items-center">
+              <p class="card-title">商品名:<%= item.name %></p>
 
-              <div class="btn-group">
+              <div class="d-flex justify-content-between align-items-center">
 
-                <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-
-                <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                <small class="text-muted">価格:<%= item.price %>円</small>
 
               </div>
-
-              <small class="text-muted"><%= item.price %>円</small>
 
             </div>
 
@@ -36,9 +32,7 @@
 
         </div>
 
-        <% end %>
-
-      </div>
+      <% end %>
 
     </div>
 
