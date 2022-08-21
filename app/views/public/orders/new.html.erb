@@ -31,21 +31,23 @@
 
           <label for="address_postal_code"><strong>お届け先</strong></label><br>
 
-          <%= f.radio_button :address_id, current_customer.address_id %>
+          <%= f.radio_button :address_id, 0 %>
           <%= f.label :address_id, "ご自身の住所" %><br>
 
           <p>
-          　〒<%= @addresses.current_customer.postal_code %> <%= @addresses.current_customer.address %><br>
-          　<%= @addresses.current_customer.name %>
+          　〒<%= current_customer.postal_code %> <%= current_customer.address %><br>
+          　<%= current_customer.first_name %>
           </p><br>
 
-          <%= f.radio_button :address_id, Address.all %>
+          <%= f.radio_button :address_id, 1 %>
           <%= f.label :address_id, "登録住所" %><br>
 
           <%= f.select :address_id, options_from_collection_for_select(Address.all, :id, :address_display) %><br>
+          <br>
+          <br>
 
-          <%= f.radio_button :, current_customer.address_id %>
-          <%= f.label :address_id, "新規じゅうしょ登録" %><br>
+          <%= f.radio_button :address_id, 2 %>
+          <%= f.label :address_id, "新規住所登録" %><br>
 
           <span>宛名</span><br>
 
@@ -75,7 +77,9 @@
 
     </div>
 
-  <% end %>s
+  <% end %>
+  <br>
+  <br>
 
 </div>
 
