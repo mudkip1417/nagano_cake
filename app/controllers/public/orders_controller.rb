@@ -25,31 +25,28 @@ class Public::OrdersController < ApplicationController
 
   def confirm
     @order = Order.new(order_params)
-    @address = Address.find(params[:order][:address_id])
-    @order.postal_code = @address.postal_code
-    @order.address = @address.address
-    @order.name = @address.name
-    if params[:address_id] == 0
-      @order.name = current_customer.name
+    if params[:order][:select_address] == "0"
+      @order.postal_code = current_customer.postal_code
       @order.address = current_customer.address
-    elsif params[:address_id] == 1
-      if Address.exist?(name: params[:order][:registrated])
-        @order.name = Address.find(params[:order][:registrated]).name
-        @order.address = Address.find(params[:order][:registrated]).address
+      @order.name = current_customer.first_name + current_customer.last_name
+    elsif params[:order][:select_address] == "1"
+      @address = Address.find(params[:order][:address_id])
+      @order.postal_code = @address.postal_code
+      @order.address = @address.address
+      @order.name = @address.name
+    elsif params[:order][:select_address] == "2"
+      @order = Order.new(order_params)
+      @order.customer_id = current_customer.id
+      @order.shipping_cost = 1
+      @order.total_payment = 1
+      if @order.save
       else
         render :new
       end
-    elsif params[:address_id] == 2
-      address_new = current_customer.cart_items.all
-      if address_new.save
-      else
-        render :new
-      end
-    else
-      redirect_to public_thanks_path
     end
+    # binding.pry
     @cart_items = current_customer.cart_items.all
-    @total = @cart_items.inject(0) {|sum, item| sum + item.sum.sum_price }
+    @total = @cart_items.inject(0) {|sum, item| sum + item.subtotal }
   end
 
   def thanks
@@ -65,11 +62,7 @@ class Public::OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:payment_method,:postal_code,:address,:name,:total_price,:address_id)
-  end
-
-  def address_params
-  params.require(:order).permit(:name, :address,:address_id)
+    params.require(:order).permit(:payment_method,:postal_code,:address,:name)
   end
 
 end
