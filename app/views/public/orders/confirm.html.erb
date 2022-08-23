@@ -51,10 +51,15 @@
         <% end %>
 
       </table>
+      <br>
 
       <p>ご請求額<br>
-      <%= @total.to_s(:delimited) %></p>
+      <%= @order.total_payment.to_s(:delimited) %></p>
       <br>
+
+      <p>送料<br>
+      <%= @order.shipping_cost %>
+      </p>
 
       <p>お届け先<br>
       〒<%= @order.postal_code %> <%= @order.address %><br>
@@ -64,6 +69,9 @@
 
       <%= form_with model: @order, url: public_orders_path, method: :post do |f| %>
         <%= f.hidden_field :payment_method %>
+        <%= f.hidden_field :shipping_cost %>
+        <%= f.hidden_field :total_payment %>
+        <%= f.hidden_field :postal_code %>
         <%= f.hidden_field :name %>
         <%= f.hidden_field :address %>
         <%= f.submit "注文確定", class:'btn btn-outline-primary btn-block' %>
