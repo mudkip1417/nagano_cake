@@ -30,6 +30,11 @@ class Public::OrdersController < ApplicationController
     end
   end
 
+  def show
+    @order = Order.find(params[:id])
+    @order_details = @order.order_details.all
+  end
+
   def confirm
     @cart_items = current_customer.cart_items
     @order = Order.new(order_params)
@@ -65,12 +70,6 @@ class Public::OrdersController < ApplicationController
 
   def thanks
   end
-
-  def show
-    @order = Order.find(params[:id])
-    @order_details = @order.order_details.all
-  end
-
 
   private
 

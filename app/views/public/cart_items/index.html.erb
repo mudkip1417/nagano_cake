@@ -7,6 +7,12 @@
 
     <div class="col-md">
 
+      <div class="text-right">
+        <%= link_to public_cart_items_all_destroy_path, method: :delete do %>
+          <button class="btn btn-danger">カートを空にする</button>
+        <% end %>
+      </div>
+
       <table class="table">
 
         <thead class="thead-dark">
@@ -35,11 +41,16 @@
 
               <td><%= cart_item.item.name%></td>
 
-              <td><%= cart_item.item.with_tax_price %></td>
+              <td><%= (cart_item.item.price*1.1).floor.to_s(:delimited) %></td>
 
-              <td><%= cart_item.amount %></td>
+              <td>
+                <%= form_with model: cart_item, url: public_cart_item_path(cart_item), local: true do |f| %>
+                  <%= f.hidden_field :id, :value => cart_item.id %>
+                  <%= f.number_field :amount, size: 1, min: 1 %> <%= f.submit "変更" %>
+                <% end %>
+              </td>
 
-              <td><%= cart_item.subtotal %></td>
+              <td><%= cart_item.subtotal.to_s(:delimited) %></td>
 
               <% cart_item.amount += cart_item.subtotal %>
 
@@ -59,19 +70,54 @@
 
       </table>
 
-      <tr>
-
-        <th>合計金額<br>
-
-        </th>
-
-
-
-      </tr>
-
-     </div>
+    </div>
 
   </div>
+
+  <div class="row">
+
+    <div class="col-xs-4">
+
+      <%= link_to root_path do %>
+        <button class="btn btn-primary">買物を続ける</button>
+      <% end %>
+
+    </div>
+
+      <div class="col-xs-4"></div>
+
+      <div class="col-xs-4">
+
+        <table class="table">
+
+          <tr>
+
+            <th class="active">合計金額</th>
+
+            <td>¥<%= @total_payment.to_s(:delimited) %></td>
+
+          </tr>
+
+        </table>
+
+      </div>
+
+      <div class="text-center">
+
+        <% if current_customer.cart_items.any? %>
+          <% if current_customer.cart_items.any? %>
+            <%= link_to new_public_order_path do %>
+              <button class="btn btn-lg btn-success">情報入力へ進む</button>
+            <% end %>
+          <% end %>
+        <% end %>
+
+      </div>
+
+    </div>
+
+  </div>
+
   <br>
 
 </div>
