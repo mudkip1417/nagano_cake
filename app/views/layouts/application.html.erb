@@ -14,101 +14,100 @@
 
     <header>
 
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <nav class="navbar navbar-expand-lg navbar-light bg-info">
 
-          <div class="container">
+        <div class="container">
 
-            <%= link_to "NaganoCake", root_path, class:"navbar-brand" %>
+          <strong><%= link_to "NaganoCake", root_path, class:"navbar-brand" %></strong>
 
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
 
-              <span class="navbar-toggler-icon"></span>
+            <span class="navbar-toggler-icon"></span>
 
-            </button>
+          </button>
 
-            <div class="navbar-collapse collapse show" id="navbarNavDropdown" style="">
+          <div class="navbar-collapse collapse show" id="navbarNavDropdown" style="">
 
-              <ul class="navbar-nav ml-auto">
+            <ul class="navbar-nav ml-auto">
 
-                <% if customer_signed_in? %>
+              <% if customer_signed_in? %>
 
-                  <li>
-                    <%= link_to public_customers_path(current_customer.id), class:'nav-link text-light' do  %>
-                      <i class="fas fa-home"></i> Home
-                    <% end %>
-                  </li>
+                <li class="customer-name">
+                 <strong>ようこそ、<%= current_customer.first_name %>さん！</strong>
+                </li>
 
-                  <li>
-                    <%= link_to destroy_customer_session_path, class:'nav-link text-light', method: :delete do %>
-                      <i class="fas fa-sign-out-alt"></i> Log out
-                    <% end %>
-                  </li>
 
-                <% else %>
+                <li>
+                  <%= link_to public_customers_path(current_customer.id), class:'nav-link text-light' do  %>
+                    マイページ
+                  <% end %>
+                </li>
 
-                  <li>
-                    <%= link_to root_path, class:'nav-link text-light' do %>
-                      <i class="fas fa-home"></i> Home
-                    <% end %>
-                  </li>
+                <li>
+                  <%= link_to public_items_path, class:'nav-link text-light' do  %>
+                    商品一覧
+                  <% end %>
+                </li>
 
-                  <li>
-                    <%= link_to new_customer_registration_path, class:'nav-link text-light' do %>
-                      <i class="fas fa-user-plus"></i> Sign up
-                    <% end %>
-                  </li>
+                <li>
+                  <%= link_to public_cart_items_path, class:'nav-link text-light' do  %>
+                    カート
+                  <% end %>
+                </li>
 
-                  <li>
-                    <%= link_to new_customer_session_path, class:'nav-link text-light' do %>
-                      <i class="fas fa-sign-in-alt"></i> Log in
-                    <% end %>
-                  </li>
+                <li>
+                  <%= link_to destroy_customer_session_path, class:'nav-link text-light', method: :delete do  %>
+                    ログアウト
+                  <% end %>
+                </li>
 
-                <% end %>
+              <% else admin_signed_in? %>
 
-              </ul>
+                <li>
+                  <%= link_to admin_items_path, class:'nav-link text-light' do  %>
+                    商品一覧
+                  <% end %>
+                </li>
 
-            </div>
+                <li>
+                  <%= link_to admin_customers_path, class:'nav-link text-light' do  %>
+                    会員一覧
+                  <% end %>
+                </li>
+
+                <li>
+                  <%= link_to admin_items_path, class:'nav-link text-light' do  %>
+                    注文履歴一覧
+                  <% end %>
+                </li>
+
+                <li>
+                  <%= link_to admin_genres_path, class:'nav-link text-light' do  %>
+                    ジャンル一覧
+                  <% end %>
+                </li>
+
+                <li>
+                  <%= link_to destroy_admin_session_path, class:'nav-link text-light',method: :delete  do  %>
+                    ログアウト
+                  <% end %>
+                </li>
+
+              <% end %>
+
+            </ul>
 
           </div>
 
-        </nav>
+        </div>
 
-      </header>
+      </nav>
 
-    <!--<header>-->
-    <!--  <div class="bg-dark collapse" id="navbarHeader" style="">-->
-    <!--    <div class="container">-->
-    <!--      <div class="row">-->
-    <!--        <div class="col-sm-8 col-md-7 py-4">-->
-    <!--          <h4 class="text-white">Wellcome!!</h4>-->
-    <!--          <p class="text-muted"></p>-->
-    <!--        </div>-->
-    <!--        <div class="col-sm-4 offset-md-1 py-4">-->
-    <!--          <h4 class="text-white">メニュー</h4>-->
-    <!--          <ul class="list-unstyled">-->
-    <!--            <li><a href="#" class="text-white">Follow on Twitter</a></li>-->
-    <!--            <li><a href="#" class="text-white">Like on Facebook</a></li>-->
-    <!--            <li><a href="#" class="text-white">Email me</a></li>-->
-    <!--          </ul>-->
-    <!--        </div>-->
-    <!--      </div>-->
-    <!--    </div>-->
-    <!--  </div>-->
-    <!--  <div class="navbar navbar-dark bg-dark shadow-sm">-->
-    <!--    <div class="container d-flex justify-content-between">-->
-    <!--      <a href="#" class="navbar-brand d-flex align-items-center">-->
-
-    <!--        <strong>Nagano Cake</strong>-->
-    <!--      </a>-->
-    <!--      <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">-->
-    <!--        <span class="navbar-toggler-icon"></span>-->
-    <!--      </button>-->
-    <!--    </div>-->
-    <!--  </div>-->
-    <!--</header>-->
+    </header>
 
     <%= yield %>
+
   </body>
+
 </html>
 

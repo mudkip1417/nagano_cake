@@ -1,4 +1,4 @@
-<div>
+<div class="quite">
 
   <h2>本当に退会しますか？</h2>
 
@@ -10,9 +10,9 @@
 
   <div>
 
-    <%= link_to '退会しない', public_customers_path(@customer) %>
+    <%= link_to '退会しない', public_customers_path(current_customer) %>
 
-    <%= link_to "退会する", public_withdraw_path(@customer), method: :patch %>
+    <%= link_to "退会する", public_withdraw_path(current_customer), method: :patch %>
 
   </div>
 

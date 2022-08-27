@@ -9,7 +9,9 @@ Rails.application.routes.draw do
   }
 
   namespace :public do
-    resources :homes, only: [:top,:about]
+    get 'homes/top' => 'homes#top', as: 'top'
+    get 'homes/about' => 'homes#about', as: 'about'
+    root to: 'homes#top'
   end
 
   namespace :public do
@@ -31,8 +33,8 @@ Rails.application.routes.draw do
 
   namespace :public do
     resources :orders, only: [:new,:index,:show,:create]
-    post 'orders/confirm' => 'orders/confirm', as: 'confirm'
-    get 'orders/thanks' => 'orders/thanks', as: 'thanks'
+    post 'orders/confirm' => 'orders#confirm', as: 'confirm'
+    get 'orders/thanks' => 'orders#thanks', as: 'thanks'
   end
 
   namespace :public do

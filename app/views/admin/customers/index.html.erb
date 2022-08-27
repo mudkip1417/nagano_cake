@@ -1,29 +1,81 @@
-<tbody>
+<br>
+<h1 class="mx-auto col-5 text-center">会員情報</h1>
+<br>
 
-  <% @customer.each do |item| %>
+<div class="border col-10 mx-auto">
 
-    <tr>
+  <hr>
+  <br>
+  <h2>会員一覧</h2>
 
-      <td>
+  <div class="row">
 
-        <%= customer.last_name %>
+    <div class="col-md">
 
-      </td>
+      <table class="table">
 
-      <td>
+        <thead class="thead-dark">
 
-        <%= customer.first_name %>
+          <tr>
 
-      </td>
+            <th scope="col">会員ID</th>
 
-      <td>
+            <th scope="col">氏名</th>
 
-        <%= customer.is_active %>
+            <th scope="col">メールアドレス</th>
 
-      </td>
+            <th scope="col">ステータス</th>
 
-    </tr>
+            <th scope="col"></th>
 
-  <% end %>
+          </tr>
 
-</tbody>
+        </thead>
+
+        <% @customers.each do |customer| %>
+
+          <tbody>
+
+            <tr>
+
+              <td><%= customer.id %></td>
+
+              <td>
+                <%= link_to (customer.last_name + customer.first_name),admin_customer_path(customer.id) %>
+              </td>
+
+              <td><%= customer.email %></td>
+
+              <td>
+                <% if customer.is_deleted %>
+                  退会済
+                <% else %>
+                  有効
+                <% end %>
+              </td>
+
+              <td class="text-right">
+
+                  <%= link_to "編集", edit_admin_customer_path(customer.id), class:'btn btn-sm btn-success' %>
+
+                  <%= link_to "削除", admin_customers_path(customer.id), class:'btn btn-sm btn-danger', method: :delete %>
+
+              </td>
+
+            </tr>
+
+          </tbody>
+
+        <% end %>
+
+      </table>
+
+     </div>
+
+  </div>
+  <br>
+
+</div>
+
+<br>
+<br>

@@ -31,6 +31,14 @@
 
         </div>
 
+        <div class="form-group">
+
+          <label for="item_introduction">Genre</label>
+
+          <%= f.collection_select :genre_id, Genre.all,:id,:name,{promit:"--選択してください--"}, {class:'form-control item_genre'} %>
+
+        </div>
+
 
         <div class="form-group">
 

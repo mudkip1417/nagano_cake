@@ -1,14 +1,13 @@
 <br>
-<br>
 <div class="container">
 
-  <div class="col">
+  <div class="col d-flex align-items-center">
 
     <div class="card shadow-sm">
 
-      <%= link_to public_item_path(@item.id) do %>
+      <%= link_to admin_item_path(@item.id) do %>
 
-        <%= image_tag @item.image, size: "250x225", class:'bd-placeholder-img card-img-top' %>
+        <%= image_tag @item.image, size: "autexaute", class:'bd-placeholder-img card-img-top' %>
 
       <% end %>
 
@@ -16,12 +15,26 @@
 
         <p class="card-title">商品名:<%= @item.name %></p>
 
+        <p class="card-title">ジャンル:<%= @item.genre_id %></p>
+
         <p class="card-title">紹介:<br><%= @item.introduction %></p>
 
         <div class="d-flex justify-content-between align-items-center">
 
           <small class="text-muted">価格:<%= @item.price %>円</small>
 
+          <small class="text-muted">
+            <% if @item.is_active %>
+              販売中
+            <% else %>
+              <%= "売り切れ" %>
+            <% end %>
+          </small>
+
+        </div>
+
+        <div class="text-right">
+          <%= link_to "編集する", edit_admin_item_path(@item.id), class:"btn btn-primary" %>
         </div>
 
       </div>
@@ -31,3 +44,6 @@
   </div>
 
 </div>
+
+<br>
+<br>
