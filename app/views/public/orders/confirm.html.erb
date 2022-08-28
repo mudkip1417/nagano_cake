@@ -38,11 +38,11 @@
 
               <td><%= cart.item.name %></td>
 
-              <td><%= (cart.item.price).to_s(:delimited) %></td>
+              <td><%= (cart.item.price*1.1).floor.to_s(:delimited) %></td>
 
               <td><%= cart.amount %></td>
 
-              <td><%= (cart.item.price*cart.amount).to_s(:delimited) %></td>
+              <td><%= cart.subtotal.to_s(:delimited) %></td>
 
             </tr>
 

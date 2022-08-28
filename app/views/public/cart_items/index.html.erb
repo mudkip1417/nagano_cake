@@ -52,7 +52,7 @@
 
               <td><%= cart_item.subtotal.to_s(:delimited) %></td>
 
-              <% cart_item.amount += cart_item.subtotal %>
+              <% @total_payment += cart_item.subtotal %>
 
               <td class="text-right">
 

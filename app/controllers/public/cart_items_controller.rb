@@ -1,9 +1,9 @@
 class Public::CartItemsController < ApplicationController
 
   def index
-    @cart_items = current_customer.cart_items
+    @cart_items = CartItem.all
     @cart_item = CartItem.new
-    @total_payment = current_customer.cart_items.cart_items_total_payment(@cart_items)
+    @total_payment = 0
   end
 
   def update
@@ -15,7 +15,7 @@ class Public::CartItemsController < ApplicationController
       redirect_to public_cart_items_path
     else
       @cart_items = current_customer.cart_items
-      @total_payment = current_customer.cart_items.cart_items_total_payment(@cart_items)
+      @total_payment = 0
       render "public/cart_items/index"
     end
   end

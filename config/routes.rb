@@ -32,7 +32,7 @@ Rails.application.routes.draw do
   namespace :public do
     resources :orders, only: [:new,:index,:show,:create]
     post 'orders/confirm' => 'orders#confirm', as: 'confirm'
-    get 'orders/thanks' => 'orders#thanks', as: 'thanks'
+    get '/thanks' => 'orders#thanks', as: 'thanks'
   end
 
   namespace :public do
