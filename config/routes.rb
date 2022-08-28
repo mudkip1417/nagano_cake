@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
 
-  root to: 'homes#top'
-
   # 顧客用
   devise_for :customers,skip: [:passwords], controllers: {
   registrations: "public/registrations",
@@ -65,5 +63,7 @@ Rails.application.routes.draw do
   namespace :admin do
     get "homes/top"
   end
+
+  root to: "homes#top"
 
 end

@@ -3,12 +3,11 @@
 
 <div class="m-5 text-center">
 
-<form class="form-signin">
+
 
 <h1 class="h3 mb-3 font-weight-normal">Log in</h1>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-
 
     <div class="field">
       <%= f.label :email %><br />
@@ -32,10 +31,13 @@
     </div>
 
 <% end %>
+<br>
+<br>
+登録がお済みではない方は<%= link_to "こちら", new_registration_path(resource_name) %>から新規登録を行ってください。
 
-<%= render "public/shared/links" %>
+<% render "public/shared/links" %>
 
-</form>
+
 
 </div>
 

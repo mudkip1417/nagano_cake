@@ -18,7 +18,12 @@
 
         <div class="container">
 
-          <strong><%= link_to "NaganoCake", root_path, class:"navbar-brand" %></strong>
+          <% if customer_signed_in? %>
+            <strong><%= link_to "NaganoCake", public_root_path, class:"navbar-brand" %></strong>
+          <% else %>
+            <strong><%= link_to "NaganoCake", root_path, class:"navbar-brand" %></strong>
+          <% end %>
+
 
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
 
@@ -61,7 +66,13 @@
                   <% end %>
                 </li>
 
-              <% else admin_signed_in? %>
+                <li>
+                  <%= link_to public_orders_path, class:'nav-link text-light' do  %>
+                    注文履歴一覧
+                  <% end %>
+                </li>
+
+              <% elsif admin_signed_in? %>
 
                 <li>
                   <%= link_to admin_items_path, class:'nav-link text-light' do  %>
@@ -90,6 +101,20 @@
                 <li>
                   <%= link_to destroy_admin_session_path, class:'nav-link text-light',method: :delete  do  %>
                     ログアウト
+                  <% end %>
+                </li>
+
+              <% else %>
+
+                <li>
+                  <%= link_to new_customer_registration_path, class:'nav-link text-light' do  %>
+                    会員登録
+                  <% end %>
+                </li>
+
+                <li>
+                  <%= link_to public_items_path, class:'nav-link text-light' do  %>
+                    商品一覧
                   <% end %>
                 </li>
 
