@@ -58,6 +58,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
    resources :orders, only: [:show,:update]
+   resources :order_details, only: [:update]
   end
 
   namespace :admin do
