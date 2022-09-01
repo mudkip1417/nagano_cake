@@ -1,4 +1,7 @@
-<%= form_with model: @item, url: item_path(@item.id), method: :patch do |f| %>
+<br>
+<div class="border col-10 mx-auto">
+
+<%= form_with model: @item, url: admin_item_path(@item.id), method: :patch do |f| %>
 
     <div class="form-group">
 
@@ -31,3 +34,5 @@
     </div>
 
 <% end %>
+
+</div>

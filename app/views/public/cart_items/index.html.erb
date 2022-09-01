@@ -8,7 +8,7 @@
     <div class="col-md">
 
       <div class="text-right">
-        <%= link_to public_cart_items_all_destroy_path, method: :delete do %>
+        <%= link_to public_cart_items_destroy_all_path, method: :delete do %>
           <button class="btn btn-danger">カートを空にする</button>
         <% end %>
       </div>
@@ -52,13 +52,9 @@
 
               <td><%= cart_item.subtotal.to_s(:delimited) %></td>
 
-              <% @total_payment += cart_item.subtotal %>
-
               <td class="text-right">
 
-                <% if cart_item.customer == current_customer %>
-                  <%= link_to "削除", public_cart_items_path(cart_item.id), class:'btn btn-sm btn-danger', method: :delete %>
-                <% end %>
+                  <%= link_to "削除", public_cart_item_path(cart_item.id), class:'btn btn-sm btn-danger', method: :delete %>
 
               </td>
 
@@ -78,7 +74,7 @@
 
     <div class="col-xs-4">
 
-      <%= link_to root_path do %>
+      <%= link_to public_root_path do %>
         <button class="btn btn-primary">買物を続ける</button>
       <% end %>
 

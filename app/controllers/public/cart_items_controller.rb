@@ -3,7 +3,7 @@ class Public::CartItemsController < ApplicationController
   def index
     @cart_items = CartItem.all
     @cart_item = CartItem.new
-    @total_payment = 0
+    @total_payment = current_customer.cart_items.cart_items_total_payment(@cart_items)
   end
 
   def update
@@ -29,15 +29,11 @@ class Public::CartItemsController < ApplicationController
       redirect_to public_cart_items_path
     elsif @cart_item.save
       @cart_items = current_customer.cart_items.all
+      @total_payment = current_customer.cart_items.cart_items_total_payment(@cart_items)
       render 'index'
     else
       render 'index'
     end
-  end
-
-  def destroy
-    current_customer.cart_items.find(params[:id]).destroy
-    redirect_to public_cart_items_path
   end
 
   def destroy_all
@@ -45,9 +41,14 @@ class Public::CartItemsController < ApplicationController
     redirect_to public_cart_items_path
   end
 
+  def destroy
+    current_customer.cart_items.find(params[:id]).destroy
+    redirect_to public_cart_items_path
+  end
+
   private
   def cart_item_params
-      params.require(:cart_item).permit(:item_id, :amount)
+      params.require(:cart_item).permit(:item_id, :amount,)
   end
 
 end

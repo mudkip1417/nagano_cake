@@ -17,11 +17,12 @@ class Public::OrdersController < ApplicationController
     if @order.save!
       @cart_items = current_customer.cart_items
       @cart_items.each do |cart_item|
-        order_detail = OrderDetail.new
+        order_detail = OrderDetail.new(order_id: @order.id)
         order_detail.item_id = cart_item.item_id
+        order_detail.order_id = @order.id
         order_detail.amount = cart_item.amount
         order_detail.price = cart_item.item.price
-        order_detail.save
+        order_detail.save!
       end
       @cart_items.destroy_all
       redirect_to public_thanks_path
@@ -32,7 +33,7 @@ class Public::OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
-    @order_details = @order.order_details.all
+    @order_details = OrderDetail.all
   end
 
   def confirm
