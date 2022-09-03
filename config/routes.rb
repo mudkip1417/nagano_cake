@@ -17,11 +17,10 @@ Rails.application.routes.draw do
   end
 
   namespace :public do
-    resources :customers, only: [:update]
+    resources :customers, only: [:update,:edit]
     get 'customers/my_page' => 'customers#show', as: 'customers'
-    get 'customers/info/edit' => 'customers#edit', as: 'edit_customers'
     get 'customers/unsubscribe' => 'customers#unsubscribe', as: 'unsubscribe'
-    get 'customers/withdraw' => 'customers#withdraw', as: 'withdraw'
+    patch 'customers/withdraw/:id' => 'customers#withdraw', as: 'withdraw'
   end
 
   namespace :public do

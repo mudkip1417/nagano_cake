@@ -58,7 +58,7 @@
 
       <p>
 
-        <%= link_to "登録情報編集", public_edit_customers_path, class:'btn btn-success my2' %>
+        <%= link_to "登録情報編集", edit_public_customer_path(current_customer.id), class:'btn btn-success my2' %>
 
         <%= link_to "注文履歴一覧", public_orders_path, class:'btn btn-primary my-2' %>
 
