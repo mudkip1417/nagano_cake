@@ -67,6 +67,12 @@
                 </li>
 
                 <li>
+                  <%= link_to public_addresses_path, class:'nav-link text-light' do  %>
+                    配送先一覧
+                  <% end %>
+                </li>
+
+                <li>
                   <%= link_to destroy_customer_session_path, class:'nav-link text-light', method: :delete do  %>
                     ログアウト
                   <% end %>
@@ -87,7 +93,7 @@
                 </li>
 
                 <li>
-                  <%= link_to admin_items_path, class:'nav-link text-light' do  %>
+                  <%= link_to admin_orders_path, class:'nav-link text-light' do  %>
                     注文履歴一覧
                   <% end %>
                 </li>
@@ -109,6 +115,12 @@
                 <li>
                   <%= link_to new_customer_registration_path, class:'nav-link text-light' do  %>
                     会員登録
+                  <% end %>
+                </li>
+
+                <li>
+                  <%= link_to new_customer_session_path, class:'nav-link text-light' do  %>
+                    会員ログイン
                   <% end %>
                 </li>
 

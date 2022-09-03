@@ -8,7 +8,7 @@
     <div class="col-md">
 
       <div class="text-right">
-        <%= link_to public_cart_items_destroy_all_path, method: :delete do %>
+        <%= link_to public_destroy_all_path(current_customer.id), method: :delete do %>
           <button class="btn btn-danger">カートを空にする</button>
         <% end %>
       </div>

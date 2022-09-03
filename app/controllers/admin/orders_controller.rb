@@ -9,7 +9,7 @@ class Admin::OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
-    @order_details = @order.order_details
+    @order_details = OrderDetail.all
   end
 
   def update
@@ -17,9 +17,9 @@ class Admin::OrdersController < ApplicationController
     @order.update(order_params)
     @order_details = @order.order_details
 
-    if @order.status == "入金確認"
+    if @order.order_status == "入金確認"
       @order_details.each do |order_detail|
-        order_detail.making_status = "製作待ち"
+        order_detail.maiking_status = "製作待ち"
         order_detail.save
       end
     end

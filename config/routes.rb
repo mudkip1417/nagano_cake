@@ -25,7 +25,7 @@ Rails.application.routes.draw do
 
   namespace :public do
     resources :cart_items, only: [:index,:update,:destroy,:create]
-    delete 'cart_items/destroy_all' => 'cart_items#destroy_all'
+    delete 'cart_items/destroy_all/:id' => 'cart_items#destroy_all', as: 'destroy_all'
   end
 
   namespace :public do
@@ -56,7 +56,7 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
-   resources :orders, only: [:show,:update]
+   resources :orders, only: [:show,:update,:index]
    resources :order_details, only: [:update]
   end
 

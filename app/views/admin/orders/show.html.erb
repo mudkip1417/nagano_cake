@@ -1,6 +1,10 @@
+<br>
+
 <div class="container">
 
   <h3>注文履歴詳細</h3>
+
+  <div class="border col-10 mx-auto">
 
   <div class="row">
 
@@ -84,8 +88,8 @@
             <td class="col-xs-2">¥<%= ((order_detail.price * order_detail.amount*1.1).floor).to_s(:delimited) %></td>
 
             <td>
-              <%= form_with model:order_detail, url: admin_order_detail_path(order_detail), local: true do |f| %>
-                <%= f.select :make_status, ["製作不可", "製作待ち", "製作中", "製作完了"] %>
+              <%= form_with model: order_detail, url: admin_order_detail_path(order_detail), local: true do |f| %>
+                <%= f.select :maiking_status, ["製作不可", "製作待ち", "製作中", "製作完了"] %>
                 <%= f.submit "更新", class: 'btn btn-primary' %>
               <% end %>
             </td>
@@ -99,6 +103,8 @@
       </table>
 
     </div>
+
+    <br>
 
     <div class="col-xs-4">
 
@@ -127,6 +133,8 @@
       <br>
 
     </div>
+
+  </div>
 
   </div>
 

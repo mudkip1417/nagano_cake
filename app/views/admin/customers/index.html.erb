@@ -47,10 +47,10 @@
               <td><%= customer.email %></td>
 
               <td>
-                <% if customer.is_active %>
-                  有効
-                <% else %>
+                <% if customer.is_deleted %>
                   退会済
+                <% else %>
+                  有効
                 <% end %>
               </td>
 
